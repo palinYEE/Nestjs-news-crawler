@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: 'yjyoon_mysql'
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - /Users/yjyoon/Desktop/Study/NestJS/News-API/db-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=yjyoon
+    ports:
+      - 3306:3306

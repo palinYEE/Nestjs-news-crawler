@@ -1,0 +1,13 @@
+{
+  "securityNews": {
+    "main": {
+      "security": "http://www.boannews.com/media/news_rss.xml?mkind=1",
+      "it": "http://www.boannews.com/media/news_rss.xml?mkind=2",
+      "safety": "http://www.boannews.com/media/news_rss.xml?mkind=4",
+      "securityWorld": "http://www.boannews.com/media/news_rss.xml?mkind=5"
+    },
+    "news": {
+      "total": "http://www.boannews.com/media/news_rss.xml"
+    }
+  }
+}
