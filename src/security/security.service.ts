@@ -1,16 +1,10 @@
 import { CrawlerRepository } from './../crawler/crawler.repository';
 import { Injectable } from '@nestjs/common';
 import { newsEntity } from '../crawler/entities/news.entity';
-import { CreateSecurityDto } from './dto/create-security.dto';
-import { UpdateSecurityDto } from './dto/update-security.dto';
 
 @Injectable()
 export class SecurityService {
   constructor(private readonly crawlerRepository: CrawlerRepository) {}
-
-  create(createSecurityDto: CreateSecurityDto) {
-    return 'This action adds a new security';
-  }
 
   async findAll() {
     const result: newsEntity[] = await this.crawlerRepository.getAll();
@@ -37,13 +31,5 @@ export class SecurityService {
       count: result.length,
       data: result,
     };
-  }
-
-  update(id: number, updateSecurityDto: UpdateSecurityDto) {
-    return `This action updates a #${id} security`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} security`;
   }
 }
