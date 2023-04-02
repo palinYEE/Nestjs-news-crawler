@@ -6,7 +6,7 @@ services:
     image: mariadb:latest
     restart: always
     volumes:
-      - /Users/yjyoon/Desktop/Study/NestJS/News-API/db-data:/var/lib/mysql
+      - /Users/yjyoon/Desktop/Study/NestJS/Nestjs-news-crawler/db-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=yjyoon
     ports:
