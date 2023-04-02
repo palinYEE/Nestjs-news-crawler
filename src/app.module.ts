@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { SecurityModule } from './security/security.module';
 import { CrawlerModule } from './crawler/crawler.module';
 import { ScheduleModule } from '@nestjs/schedule';
@@ -20,13 +18,12 @@ import { ScheduleModule } from '@nestjs/schedule';
       password: process.env.MARIA_DB_PASSWORD,
       database: process.env.MARIA_DB_DATABASE,
       entities: [__dirname + '/**/**/entities/*.{ts,js}'],
-      synchronize: true,
+      synchronize: false,
+      logging: false,
     }),
     ScheduleModule.forRoot(),
     SecurityModule,
     CrawlerModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

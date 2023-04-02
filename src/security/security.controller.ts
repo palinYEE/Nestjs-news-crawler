@@ -1,45 +1,20 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { SecurityService } from './security.service';
-import { CreateSecurityDto } from './dto/create-security.dto';
-import { UpdateSecurityDto } from './dto/update-security.dto';
-
 @Controller('security')
 export class SecurityController {
   constructor(private readonly securityService: SecurityService) {}
-
-  @Post()
-  create(@Body() createSecurityDto: CreateSecurityDto) {
-    return this.securityService.create(createSecurityDto);
-  }
-
   @Get()
-  findAll() {
-    return this.securityService.findAll();
+  async findAll() {
+    return await this.securityService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.securityService.findOne(+id);
+  @Get('/date')
+  async findDateBoundary(@Query('start') start: Date, @Query('end') end: Date) {
+    return this.securityService.findByDate(start, end);
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateSecurityDto: UpdateSecurityDto,
-  ) {
-    return this.securityService.update(+id, updateSecurityDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.securityService.remove(+id);
+  @Get('/:id')
+  async findOne(@Param('id') id: string) {
+    return this.securityService.findOne(id);
   }
 }

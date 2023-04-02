@@ -68,8 +68,7 @@ export class CrawlerController {
     const target: string = apiList['securityNews']['main']['security'];
     const html = await this.crawlerWeb(target);
     const dataList: Array<SecurityNewsDto> = this.securityHtmlParser(html);
-    console.log(dataList);
-    //* TODO: repository 로 데이터를 저장하는 로직 추가
+
     this.crawlerRepository.inputData(dataList);
   }
 }

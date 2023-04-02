@@ -11,6 +11,21 @@ export class CrawlerRepository extends Repository<newsEntity> {
 
   private readonly logger = new Logger(CrawlerRepository.name);
 
+  async getAll(): Promise<newsEntity[]> {
+    return await this.find();
+  }
+
+  async getByUUID(uuid: string): Promise<newsEntity> {
+    return await this.findOneBy({ id: uuid });
+  }
+
+  async getByDate(start: Date, end: Date): Promise<newsEntity[]> {
+    return await this.createQueryBuilder()
+      .where(`date_created>='${start}'`)
+      .andWhere(`date_created<='${end}'`)
+      .getMany();
+  }
+
   async inputData(dataList: Array<SecurityNewsDto>) {
     this.logger.log(`Security Data Insert Count : ${dataList.length}`);
     dataList.forEach(async (data) => {
