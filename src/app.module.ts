@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { SecurityModule } from './security/security.module';
 import { CrawlerModule } from './crawler/crawler.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { LicenseModule } from './license/license.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ScheduleModule } from '@nestjs/schedule';
     ScheduleModule.forRoot(),
     SecurityModule,
     CrawlerModule,
+    LicenseModule,
   ],
 })
 export class AppModule {}
