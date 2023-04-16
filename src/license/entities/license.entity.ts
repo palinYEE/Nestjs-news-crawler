@@ -3,9 +3,9 @@ import {
   BaseEntity,
   Column,
   Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity({ name: 'license' })

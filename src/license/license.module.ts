@@ -19,7 +19,7 @@ import { LicenseRepository } from './repositories/license.repository';
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: {
-        expiresIn: '2 days',
+        expiresIn: 3600,
       },
     }),
   ],

@@ -2,10 +2,11 @@ import {
   BaseEntity,
   Column,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   CreateDateColumn,
+  ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { LicenseEntity } from './license.entity';
 
@@ -29,8 +30,8 @@ export class UserEntity extends BaseEntity {
 
   @OneToMany(() => LicenseEntity, (licenseEntity) => licenseEntity.id, {
     eager: false,
-    nullable: false,
+    nullable: true,
     onDelete: 'CASCADE',
   })
-  licenseId!: LicenseEntity[];
+  license!: LicenseEntity[];
 }
