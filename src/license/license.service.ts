@@ -18,9 +18,9 @@ export class LicenseService {
   private logger = new Logger(LicenseService.name);
   private readonly asyncPbkdf2 = promisify(crypto.pbkdf2);
 
-  async signUp(authCredentialDto: AuthCredentialDto): Promise<void> {
+  async signUp(authCredentialDto: AuthCredentialDto): Promise<any> {
     const { username, password } = authCredentialDto;
-    console.log('11');
+
     const dupCheck = await this.userRepository.findOneByUsername(username);
     if (dupCheck) {
       throw new HttpException(
@@ -40,6 +40,9 @@ export class LicenseService {
         username,
         pbkdf2PasswordBuffer.toString('base64'),
       );
+      return {
+        resultMessage: '회원가입이 완료되었습니다.',
+      };
     } catch (error) {
       this.logger.error(error);
       throw new HttpException(error.message, HttpStatus.UNAUTHORIZED);

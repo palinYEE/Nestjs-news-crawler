@@ -25,5 +25,6 @@ import { LicenseRepository } from './repositories/license.repository';
   ],
   controllers: [LicenseController],
   providers: [LicenseService, JwtService, UserRepository, LicenseRepository],
+  exports: [JwtService, PassportModule],
 })
 export class LicenseModule {}

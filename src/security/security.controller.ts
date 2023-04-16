@@ -1,5 +1,8 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { SecurityService } from './security.service';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('Security Module')
 @Controller('security')
 export class SecurityController {
   constructor(private readonly securityService: SecurityService) {}
