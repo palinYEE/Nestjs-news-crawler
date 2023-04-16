@@ -2,7 +2,6 @@ import { Controller, Logger } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import axios from 'axios';
 import * as convert from 'xml-js';
-import * as cheerio from 'cheerio';
 import * as iconv from 'iconv-lite';
 import { loadConfig } from 'src/common/utils/fileHandler';
 import { SecurityNewsDto } from './dtos/securityNews.dto';

@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { LicenseEntity } from './license.entity';
 
-@Entity()
+@Entity({ name: 'user' })
 @Unique(['username']) // 유니크한 값인지 확인하는 데코레이터
 export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -27,8 +27,10 @@ export class UserEntity extends BaseEntity {
   })
   created_at: Date;
 
-  @OneToMany(() => LicenseEntity, (licenseEntity) => licenseEntity.license, {
-    eager: true,
+  @OneToMany(() => LicenseEntity, (licenseEntity) => licenseEntity.id, {
+    eager: false,
+    nullable: false,
+    onDelete: 'CASCADE',
   })
-  license: LicenseEntity[];
+  licenseId!: LicenseEntity[];
 }

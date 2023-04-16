@@ -8,7 +8,7 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'license' })
 export class LicenseEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -22,6 +22,6 @@ export class LicenseEntity extends BaseEntity {
   })
   created_at: Date;
 
-  @ManyToOne(() => UserEntity, (user) => user.license, { eager: false })
+  @ManyToOne(() => UserEntity, (user) => user.id, { eager: true })
   user: UserEntity;
 }
