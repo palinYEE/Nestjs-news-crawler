@@ -5,6 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { UserRepository } from './repositories/user.repository';
 import { LicenseRepository } from './repositories/license.repository';
+import { JwtStrategy } from './jwt.strategy';
 
 /**
  * 해당 모듈은 라이선스를 발급해주는 모듈입니다.
@@ -24,7 +25,13 @@ import { LicenseRepository } from './repositories/license.repository';
     }),
   ],
   controllers: [LicenseController],
-  providers: [LicenseService, JwtService, UserRepository, LicenseRepository],
-  exports: [JwtService, PassportModule],
+  providers: [
+    LicenseService,
+    JwtService,
+    UserRepository,
+    LicenseRepository,
+    JwtStrategy,
+  ],
+  exports: [PassportModule, JwtStrategy],
 })
 export class LicenseModule {}
