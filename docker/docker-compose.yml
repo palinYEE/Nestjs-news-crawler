@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   db:
-    container_name: 'yjyoon_mysql'
+    container_name: '${NAME}_mysql'
     image: mariadb:latest
     restart: always
     volumes:
-      - /Users/yjyoon/Desktop/Study/NestJS/Nestjs-news-crawler/db-data:/var/lib/mysql
+      - ${VOLUME_PATH}:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=yjyoon
+      - MYSQL_ROOT_PASSWORD=${PASSWORD}
     ports:
       - 3306:3306

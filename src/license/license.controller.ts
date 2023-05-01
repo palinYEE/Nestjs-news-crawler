@@ -1,7 +1,8 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, UseGuards } from '@nestjs/common';
 import { LicenseService } from './license.service';
 import { AuthCredentialDto } from './dto/user-credential.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('License Module')
 @Controller('license')
@@ -30,6 +31,7 @@ export class LicenseController {
   }
 
   @Get('checkLicenseStatus')
+  @UseGuards(AuthGuard('jwt'))
   @ApiOperation({ summary: '모든 유저에 대한 발급된 라이선스 리스트 확인 API' })
   async checkLicenseStuatus() {
     return await this.licenseService.checkLicenseStuatus();
